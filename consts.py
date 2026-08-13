@@ -1,0 +1,29 @@
+NUM_ROWS = 25
+NUM_COLS = 50
+WINDOW_WIDTH = 1000
+WINDOW_HEIGHT = 500
+CELL_SIZE = 20
+
+SOLDIER_W = 2
+SOLDIER_H = 4
+FLAG_W = 4
+FLAG_H = 3
+MINE_W = 3
+MINE_H = 1
+BUSH_W = 3
+BUSH_H = 2
+gridcolor = "#5EC73C"
+bgdark = "#004D0A"
+bglight = "#009911"
+
+BUSHES_AMOUNT = 20
+MINES_AMOUNT = 20
+
+EMPTY = "empty"
+BUSH = "bush"
+MINE = "mine"
+FLAG = "flag_start"
+SOLDIER = "soldier_start"
+
+BG_COLOR = (11, 102, 35)
+TEXT_COLOR = (255, 255, 255)
