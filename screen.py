@@ -5,6 +5,8 @@ g_img = None
 m_img = None
 f_img = None
 s_img = None
+e_img = None
+i_img = None
 
 
 def init_screen():
@@ -12,6 +14,8 @@ def init_screen():
     global m_img
     global f_img
     global s_img
+    global e_img
+    global i_img
 
     pygame.init()
     s = pygame.display.set_mode((consts.WINDOW_WIDTH, consts.WINDOW_HEIGHT))
@@ -29,10 +33,16 @@ def init_screen():
     t_s = pygame.image.load('soldier.png')
     s_img = pygame.transform.scale(t_s, (consts.CELL_SIZE * consts.SOLDIER_W, consts.CELL_SIZE * consts.SOLDIER_H))
 
+    t_e = pygame.image.load('explotion.png')
+    e_img = pygame.transform.scale(t_e, (consts.CELL_SIZE * consts.SOLDIER_W, consts.CELL_SIZE * consts.SOLDIER_H))
+
+    t_i = pygame.image.load('injury.png')
+    i_img = pygame.transform.scale(t_i, (consts.CELL_SIZE * consts.SOLDIER_W, consts.CELL_SIZE * consts.SOLDIER_H))
+
     return s
 
 
-def draw_board(s, m, b_m, soldier_r, soldier_c, is_grid_view):
+def draw_board(s, m, b_m, soldier_r, soldier_c, is_grid_view, state):
     if is_grid_view == True:
         s.fill(consts.bgdark)
 
@@ -56,7 +66,13 @@ def draw_board(s, m, b_m, soldier_r, soldier_c, is_grid_view):
 
         s_x = soldier_c * consts.CELL_SIZE
         s_y = soldier_r * consts.CELL_SIZE
-        s.blit(s_img, (s_x, s_y))
+
+        if state == "alive":
+            s.blit(s_img, (s_x, s_y))
+        if state == "exploded":
+            s.blit(e_img, (s_x, s_y))
+        if state == "injured":
+            s.blit(i_img, (s_x, s_y))
 
     else:
         s.fill(consts.bglight)
@@ -85,7 +101,13 @@ def draw_board(s, m, b_m, soldier_r, soldier_c, is_grid_view):
 
         s_x = soldier_c * consts.CELL_SIZE
         s_y = soldier_r * consts.CELL_SIZE
-        s.blit(s_img, (s_x, s_y))
+
+        if state == "alive":
+            s.blit(s_img, (s_x, s_y))
+        if state == "exploded":
+            s.blit(e_img, (s_x, s_y))
+        if state == "injured":
+            s.blit(i_img, (s_x, s_y))
 
         font = pygame.font.SysFont('arial', 20, True)
         t1 = font.render("Welcome to The Flag game.", True, consts.TEXT_COLOR)

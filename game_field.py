@@ -18,6 +18,24 @@ def create_empty_bushes_board(bushes_matrix):
         bushes_matrix.append(row)
 
 
+def create_soldier_board(matrix):
+    for i in range(consts.NUM_ROWS):
+        row = []
+        for j in range(consts.NUM_COLS):
+            row.append(consts.EMPTY)
+        matrix.append(row)
+
+
+def update_soldier_board(matrix, r, c):
+    for i in range(consts.NUM_ROWS):
+        for j in range(consts.NUM_COLS):
+            matrix[i][j] = consts.EMPTY
+
+    for i in range(consts.SOLDIER_H):
+        for j in range(consts.SOLDIER_W):
+            matrix[r + i][c + j] = consts.SOLDIER
+
+
 def reserve_soldier_spot(board_matrix):
     for i in range(consts.SOLDIER_H):
         for j in range(consts.SOLDIER_W):
