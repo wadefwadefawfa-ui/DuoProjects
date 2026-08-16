@@ -83,4 +83,3 @@ while run:
 
 pygame.quit()
 
-while loop :
