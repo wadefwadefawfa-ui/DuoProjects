@@ -82,3 +82,5 @@ while run:
     screen.draw_board(s, m, b_m, soldier.soldier_row, soldier.soldier_col, is_grid_view, soldier_state)
 
 pygame.quit()
+
+while loop :
