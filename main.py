@@ -1,9 +1,9 @@
+import random
 import pygame
+import consts
+import soldier
 import game_field
 import screen
-import soldier
-import consts
-
 
 def check_mine():
     legs = soldier.get_legs_indexes()
@@ -81,5 +81,4 @@ while run:
 
     screen.draw_board(s, m, b_m, soldier.soldier_row, soldier.soldier_col, is_grid_view, soldier_state)
 
-pygame.quit()
-
+    game_field.check_win(s)

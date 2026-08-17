@@ -1,6 +1,7 @@
 import random
 import consts
-
+import soldier
+import pygame
 
 def create_empty_board(board_matrix):
     for i in range(consts.NUM_ROWS):
@@ -86,3 +87,20 @@ def place_mines(board_matrix):
                 for j in range(consts.MINE_W):
                     board_matrix[rand_row + i][rand_col + j] = consts.MINE
             mines_count += 1
+
+
+def check_win(s):
+    start_r = consts.NUM_ROWS - consts.FLAG_H
+    start_c = consts.NUM_COLS - consts.FLAG_W
+
+    if soldier.soldier_row + consts.SOLDIER_H - 1 >= start_r and soldier.soldier_col + consts.SOLDIER_W - 1 >= start_c:
+        font = pygame.font.SysFont('arial', 60, True)
+        win_text = font.render("You Win!", True, consts.TEXT_COLOR)
+        s.blit(win_text, (380, 200))
+        pygame.display.flip()
+
+        pygame.event.pump()
+        pygame.time.delay(3000)
+
+        soldier.soldier_row = 0
+        soldier.soldier_col = 0
