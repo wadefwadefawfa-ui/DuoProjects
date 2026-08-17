@@ -26,12 +26,3 @@ def move_soldier(direction):
         soldier_col += 1
     if direction == "left" and soldier_col > 0:
         soldier_col -= 1
-
-def check_mine():
-    legs = soldier.get_legs_indexes()
-    for i in range(len(legs)):
-        r = legs[i][0]
-        c = legs[i][1]
-        if s_m[r][c] == consts.SOLDIER and m[r][c] == consts.MINE:
-            return True
-    return False
