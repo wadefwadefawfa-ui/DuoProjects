@@ -14,11 +14,9 @@ def check_mine():
             return True
     return False
 
-
-
-m = [] #המטריצה של הפצצות
-b_m = [] # המטריצה של השיחים
-s_m = [] #המטריצה של החייל
+m = []
+b_m = []
+s_m = []
 
 game_field.create_empty_board(m)
 game_field.create_empty_bushes_board(b_m)
@@ -80,5 +78,18 @@ while run:
                     explosion_time = pygame.time.get_ticks()
 
     screen.draw_board(s, m, b_m, soldier.soldier_row, soldier.soldier_col, is_grid_view, soldier_state)
+
+    if soldier_state == "exploded":
+        font = pygame.font.SysFont('arial', 60, True)
+        lose_text = font.render("You Lost!", True, consts.TEXT_COLOR)
+        s.blit(lose_text, (380, 200))
+        pygame.display.flip()
+
+        pygame.event.pump()
+        pygame.time.delay(3000)
+
+        soldier.soldier_row = 0
+        soldier.soldier_col = 0
+        soldier_state = "alive"
 
     game_field.check_win(s)
