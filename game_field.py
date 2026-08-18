@@ -10,7 +10,6 @@ def create_empty_board(board_matrix):
             row.append(consts.EMPTY)
         board_matrix.append(row)
 
-
 def create_empty_bushes_board(bushes_matrix):
     for i in range(consts.NUM_ROWS):
         row = []
@@ -18,30 +17,10 @@ def create_empty_bushes_board(bushes_matrix):
             row.append(consts.EMPTY)
         bushes_matrix.append(row)
 
-
-def create_soldier_board(matrix):
-    for i in range(consts.NUM_ROWS):
-        row = []
-        for j in range(consts.NUM_COLS):
-            row.append(consts.EMPTY)
-        matrix.append(row)
-
-
-def update_soldier_board(matrix, r, c):
-    for i in range(consts.NUM_ROWS):
-        for j in range(consts.NUM_COLS):
-            matrix[i][j] = consts.EMPTY
-
-    for i in range(consts.SOLDIER_H):
-        for j in range(consts.SOLDIER_W):
-            matrix[r + i][c + j] = consts.SOLDIER
-
-
 def reserve_soldier_spot(board_matrix):
     for i in range(consts.SOLDIER_H):
         for j in range(consts.SOLDIER_W):
             board_matrix[i][j] = consts.SOLDIER
-
 
 def reserve_flag_spot(board_matrix):
     start_r = consts.NUM_ROWS - consts.FLAG_H
@@ -49,7 +28,6 @@ def reserve_flag_spot(board_matrix):
     for i in range(start_r, consts.NUM_ROWS):
         for j in range(start_c, consts.NUM_COLS):
             board_matrix[i][j] = consts.FLAG
-
 
 def place_bushes(bushes_matrix):
     bushes_count = 0
@@ -69,7 +47,6 @@ def place_bushes(bushes_matrix):
                     bushes_matrix[rand_row + i][rand_col + j] = consts.BUSH
             bushes_count += 1
 
-
 def place_mines(board_matrix):
     mines_count = 0
     while mines_count < consts.MINES_AMOUNT:
@@ -87,7 +64,6 @@ def place_mines(board_matrix):
                 for j in range(consts.MINE_W):
                     board_matrix[rand_row + i][rand_col + j] = consts.MINE
             mines_count += 1
-
 
 def check_win(s):
     start_r = consts.NUM_ROWS - consts.FLAG_H

@@ -10,25 +10,21 @@ def check_mine():
     for i in range(len(legs)):
         r = legs[i][0]
         c = legs[i][1]
-        if s_m[r][c] == consts.SOLDIER and m[r][c] == consts.MINE:
+        if m[r][c] == consts.MINE:
             return True
     return False
 
 m = []
 b_m = []
-s_m = []
 
 game_field.create_empty_board(m)
 game_field.create_empty_bushes_board(b_m)
-game_field.create_soldier_board(s_m)
 
 game_field.reserve_soldier_spot(m)
 game_field.reserve_flag_spot(m)
 
 game_field.place_bushes(b_m)
 game_field.place_mines(m)
-
-game_field.update_soldier_board(s_m, soldier.soldier_row, soldier.soldier_col)
 
 s = screen.init_screen()
 
@@ -69,8 +65,6 @@ while run:
                     soldier.move_soldier("right")
                 if e.key == pygame.K_LEFT:
                     soldier.move_soldier("left")
-
-                game_field.update_soldier_board(s_m, soldier.soldier_row, soldier.soldier_col)
 
                 is_boom = check_mine()
                 if is_boom == True:
