@@ -20,13 +20,9 @@ def move_soldier(direction):
     global soldier_row, soldier_col
     if direction == "down" and soldier_row + consts.SOLDIER_H < consts.NUM_ROWS:
         soldier_row += 1
-        print(soldier_col,soldier_row)
     if direction == "up" and soldier_row > 0:
         soldier_row -= 1
-        print(soldier_col, soldier_row)
     if direction == "right" and soldier_col + consts.SOLDIER_W < consts.NUM_COLS:
         soldier_col += 1
-        print(soldier_col, soldier_row)
     if direction == "left" and soldier_col > 0:
         soldier_col -= 1
-        print(soldier_col, soldier_row)
